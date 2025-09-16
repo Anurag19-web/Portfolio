@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar";
+import { Navbar } from "./Navbar";
 import { HeroSection } from "../public/HeroSection";
 import { About } from "./About";
 import { Project } from "./Project";
