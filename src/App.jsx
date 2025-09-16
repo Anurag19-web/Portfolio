@@ -1,5 +1,5 @@
 import { Navbar } from "./Navbar";
-import { HeroSection } from "../public/HeroSection";
+import { HeroSection } from "./HeroSection";
 import { About } from "./About";
 import { Project } from "./Project";
 import { Skill } from "./Skill";
