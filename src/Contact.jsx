@@ -1,7 +1,24 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Contact = () => {
+    const [emailLink, setEmailLink] = useState("");
+
+    useEffect(() => {
+        // Simple mobile detection
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // Mobile → Gmail app / default mail app
+            setEmailLink("mailto:anuragnayak78910@gmail.com");
+        } else {
+            // Desktop → Gmail web
+            setEmailLink(
+                "https://mail.google.com/mail/?view=cm&fs=1&to=anuragnayak78910@gmail.com"
+            );
+        }
+    }, []);
     return (
         <section id="contact" className="py-20 bg-gray-100">
             <div className="container mx-auto px-6 text-center">
@@ -17,7 +34,17 @@ export const Contact = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <p className="text-lg"><strong>📞 Phone:</strong> +91 85114 10560</p>
-                    <p className="text-lg"><strong>📧 Email:</strong> anuragnayak78910@gmail.com</p>
+                    <p className="text-lg">
+                        <strong>📧 Email:</strong>{" "}
+                        <a
+                            href={emailLink}
+                            target={emailLink.startsWith("http") ? "_blank" : undefined}
+                            rel={emailLink.startsWith("http") ? "noreferrer" : undefined}
+                            className="text-blue-600 hover:underline"
+                        >
+                            anuragnayak78910@gmail.com
+                        </a>
+                    </p>
                     <p className="text-lg"><strong>📍 Location:</strong> Ahmedabad, Gujarat, India</p>
                     <p className="text-lg">
                         <strong>💻 GitHub:</strong>{" "}
@@ -50,9 +77,9 @@ export const Contact = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=anuragnayak78910@gmail.com"
-                        target="_blank"
-                        rel="noreferrer"
+                        href={emailLink}
+                        target={emailLink.startsWith("http") ? "_blank" : undefined}
+                        rel={emailLink.startsWith("http") ? "noreferrer" : undefined}
                         className="hover:text-blue-600"
                     >
                         <FaEnvelope />
