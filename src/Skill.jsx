@@ -25,7 +25,7 @@ export const Skill = ()=>{
             "Tailwind CSS",
             "Git & GitHub",
             "Postman",
-            "Vercel / Netlify",
+            "Vercel / Netlify / Render",
           ].map((skill) => (
             <motion.span
               key={skill}
